@@ -13,9 +13,3 @@ WHITE = (255, 255, 255)
 BLUE =  (0, 0, 255)
 GREEN = (0, 255, 0)
 RED =   (255, 0, 0)
-
-PILLARS = [
-    pygame.image.load("./Images/1x/Asset 1.png"),
-    pygame.image.load("./Images/1x/Asset 2.png"),
-    pygame.image.load("./Images/1x/Asset 4.png")
-]
