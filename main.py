@@ -1,14 +1,21 @@
 import pygame
 
-from contants import *
+from constants import *
 from classes.pillarClass import Pillar
+from States.playstate import Play
+from States.startstate import Start
 
 pygame.init()
 
-GAME_OVER = False
+STATES = {
+    "play" : Play(),
+    "start" : Start()
+}
 
-demo = Pillar()
-demo.render()
+gStateMachine.states = STATES
+gStateMachine.change("play")
+
+GAME_OVER = False
 
 while not GAME_OVER:
 
@@ -17,7 +24,7 @@ while not GAME_OVER:
             GAME_OVER = True
         
     SCREEN.fill(BLACK)
-    demo.update()
+    gStateMachine.update()
     pygame.display.flip()
     clock.tick(60)
 

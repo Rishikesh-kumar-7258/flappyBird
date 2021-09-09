@@ -1,29 +1,25 @@
 import pygame
-import random
+from random import randint
 
-from contants import *
+from constants import *
 
 class Pillar:
 
-    def __init_(self, color="blue"):
+    def __init__(self, color=(0, 0, 255)):
 
         self.x = WINDOW_WIDTH
-        self.y = random.randint(50, WINDOW_HEIGHT // 2 - 20)
+        self.width = 100
+        self.height1 = randint(50, WINDOW_HEIGHT - 100)
+        self.height2 = randint(50, WINDOW_HEIGHT - self.height1 - 50)
         self.color = color
 
-        self.img = pygame.image.load("../Images/1x/blue.png")
+    def render(self):
 
+        pygame.draw.rect(SCREEN, self.color, [self.x, 0, self.width, self.height1])
+        pygame.draw.rect(SCREEN, self.color, [self.x, WINDOW_HEIGHT - self.height2, self.width, self.height2])
 
-    def render(self) : 
+    def update(self):
 
-        img_rect = self.img.get_rect()
-        img_rect.x = self.x
-        img_rect.y = self.y
-
-        SCREEN.blit(self.img, img_rect)
-
-        pygame.draw.rect(SCREEN, (255, 255, 255), [50, 50, 50, 50])
-
-    def update(self) : 
+        self.x -= 3
 
         self.render()

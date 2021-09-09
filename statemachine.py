@@ -5,21 +5,19 @@ class StateMachine:
         The state machine will handle all the state changes in the game
         """
 
-        self.current = {}
         self.states = states
+        self.current = {}
 
     def change(self, state):
         
         """
         This function will be transitioning states
         """
-        assert state in self.states
+        if not state in self.states : return 
 
-        self.current.Exit()
-        self.current = states[state]
+        self.current = self.states[state]
         self.current.enter()
 
-    
-    def update(self, params=None):
+    def update(self):
         
-        self.current.update(params)
+        self.current.update()
