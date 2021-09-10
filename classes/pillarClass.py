@@ -5,12 +5,13 @@ from constants import *
 
 class Pillar:
 
-    def __init__(self, color=(0, 0, 255)):
+    def __init__(self, color=(173, 40, 9)):
 
         self.x = WINDOW_WIDTH
         self.width = 100
-        self.height1 = randint(50, WINDOW_HEIGHT - 100)
-        self.height2 = randint(50, WINDOW_HEIGHT - self.height1 - 50)
+        self.gap = 100
+        self.height1 = randint(200, 400)
+        self.height2 = WINDOW_HEIGHT - self.height1 - self.gap - randint(0, 100)
         self.color = color
 
     def render(self):

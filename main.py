@@ -23,7 +23,7 @@ while not GAME_OVER:
         if event.type == pygame.QUIT:
             GAME_OVER = True
         
-    SCREEN.fill(BLACK)
+    SCREEN.fill(BGC)
     gStateMachine.update()
     pygame.display.flip()
     clock.tick(60)
