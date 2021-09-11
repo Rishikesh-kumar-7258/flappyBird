@@ -69,6 +69,14 @@ class Play(Base):
         self.upper_rect.x -= self.upper_speed
         self.upper_rect2.x -= self.upper_speed
 
+        for pillar in self.pillars:
+            if self.bird.collides(pillar) :
+                gStateMachine.change("gameover")
+        
+        if self.bird.y <= 0 or self.bird.y >= WINDOW_HEIGHT - 40: gStateMachine.change("gameover")
+        
+        # if self.bird.y >= self.lower_rect.y or self.bird.y >= self.lower_rect2.y or self.bird.y <= self.upper_rect.y or self.bird.y <- self.upper_rect2.y : gStateMachine.change("gameover")
+
         self.re_render(self.upper_rect)
         self.re_render(self.upper_rect2)
         self.re_render(self.lower_rect)
@@ -91,6 +99,9 @@ class Play(Base):
         self.pillars = []
         self.current = Pillar()
         self.pillars.append(self.current)
+        self.bird_speed = 0
+        self.bird = Bird()
+
     
     def re_render(self, img):
         if img.x <= -WINDOW_WIDTH :

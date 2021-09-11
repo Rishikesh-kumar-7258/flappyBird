@@ -5,6 +5,7 @@ from constants import *
 from States.playstate import Play
 from States.startstate import Start
 from States.countdownstate import Countdown
+from States.gameoverstate import GameOver
 
 pygame.init()
 
@@ -12,6 +13,7 @@ STATES = {
     "start" : Start(),
     "play" : Play(),
     "countdown" : Countdown(),
+    "gameover" : GameOver(),
 }
 
 gStateMachine.states = STATES

@@ -34,3 +34,6 @@ class Countdown(Base):
         self.count -= 0.1
         pygame.time.wait(100)
         self.render()
+    
+    def enter(self):
+        self.count = 4

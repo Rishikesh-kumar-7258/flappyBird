@@ -18,3 +18,8 @@ class Bird:
     def update(self):
 
         self.render()
+    
+    def collides(self, obj):
+
+        return ((self.x + self.size >= obj.x and self.x <= obj.x + obj.width) and 
+                (self.y <= obj.height1 or self.y + self.size >= WINDOW_HEIGHT - obj.height2))
