@@ -18,6 +18,6 @@ class StateMachine:
         self.current = self.states[state]
         self.current.enter()
 
-    def update(self):
+    def update(self, params):
         
-        self.current.update()
+        self.current.update(params)

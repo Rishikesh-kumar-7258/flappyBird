@@ -1,7 +1,9 @@
 import pygame
 
 from States.basestate import Base
+
 from classes.pillarClass import Pillar
+from classes.birdClass import Bird
 from constants import *
 
 class Play(Base):
@@ -12,6 +14,7 @@ class Play(Base):
         self.pillars = []
         self.current = Pillar()
         self.pillars.append(self.current)
+        self.bird = Bird()
 
         self.gap = 200
 
@@ -35,8 +38,13 @@ class Play(Base):
         self.lower_speed = 5
         self.upper_speed = 3
 
+        self.bird_speed = 0
+        self.accel = 0.3
+
     
     def render(self): 
+
+        self.bird.render()
 
         for pillar in self.pillars:
             pillar.render()
@@ -46,7 +54,15 @@ class Play(Base):
         SCREEN.blit(self.upper, self.upper_rect2)
         SCREEN.blit(self.lower, self.lower_rect2)
 
-    def update(self):
+    def update(self, params):
+
+        for event in params:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.bird_speed = -5
+            
+        self.bird_speed += self.accel
+        self.bird.y += self.bird_speed
 
         self.lower_rect.x -= self.lower_speed
         self.lower_rect2.x -= self.lower_speed

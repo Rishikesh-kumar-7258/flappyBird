@@ -1,30 +1,33 @@
 import pygame
 
 from constants import *
-from classes.pillarClass import Pillar
+
 from States.playstate import Play
 from States.startstate import Start
+from States.countdownstate import Countdown
 
 pygame.init()
 
 STATES = {
+    "start" : Start(),
     "play" : Play(),
-    "start" : Start()
+    "countdown" : Countdown(),
 }
 
 gStateMachine.states = STATES
-gStateMachine.change("play")
+gStateMachine.change("start")
 
 GAME_OVER = False
 
 while not GAME_OVER:
 
-    for event in pygame.event.get():
+    events = pygame.event.get()
+    for event in events:
         if event.type == pygame.QUIT:
             GAME_OVER = True
         
     SCREEN.fill(BGC)
-    gStateMachine.update()
+    gStateMachine.update(events)
     pygame.display.flip()
     clock.tick(60)
 
