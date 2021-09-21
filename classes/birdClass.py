@@ -1,6 +1,7 @@
 import pygame
 
 from constants import *
+from Images import *
 
 class Bird(pygame.sprite.Sprite):
 
@@ -12,25 +13,20 @@ class Bird(pygame.sprite.Sprite):
         self.y = WINDOW_HEIGHT // 2 - self.size // 2
         self.color = BLUE
 
-        self.image = pygame.image.load("../Images/Bird/Asset 1.png").convert()
-        self.image2 = pygame.image.load("../Images/Bird/Asset 2.png").convert()
-        self.image.set_colorkey(WHITE)
+        self.image1 = pygame.image.load("Images/bird1.png").convert()
+        self.image2 = pygame.image.load("Images/bird2.png").convert()
+        self.image1.set_colorkey(WHITE)
         self.image2.set_colorkey(WHITE)
+
+        self.flap = False
+
+        if (self.flap) : self.image = self.image2
+        else : self.image = self.image1
 
         self.rect = self.image.get_rect()
         self.rect.center = (self.x, self.y)
-        self.rect2 = self.image.get_rect()
-        self.rect2.center = (self.x, self.y)
-        # self.bird = pygame.draw.rect(SCREEN, self.color, [self.x, self.y, self.size, self.size])
-
-    # def render(self):
-    #     self.bird = pygame.draw.rect(SCREEN, self.color, [self.x, self.y, self.size, self.size])
-
-    def update(self):  pass
-
-        # self.render()
     
-    # def collides(self, obj):
-
-    #     return ((self.x + self.size >= obj.x and self.x <= obj.x + obj.width) and 
-    #             (self.y <= obj.height1 or self.y + self.size >= WINDOW_HEIGHT - obj.height2))
+    def make_flap(self):
+        
+        if self.flap : self.image = self.image2
+        else : self.image = self.image1
