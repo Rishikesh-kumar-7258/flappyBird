@@ -18,3 +18,5 @@ RED =   (255, 0, 0)
 BGC =   (76, 49, 49)
 
 gStateMachine = StateMachine()
+
+SCORE = 0
