@@ -16,6 +16,9 @@ class Play(Base):
         self.pillars.append(self.current)
         self.bird = Bird()
 
+        self.bird_sprite = pygame.sprite.Group()
+        self.bird_sprite.add(self.bird)
+
         self.gap = 200
 
         #setting up background
@@ -41,10 +44,12 @@ class Play(Base):
         self.bird_speed = 0
         self.accel = 0.3
 
-    
+        self.score = 0
+        self.add_score = False
+
     def render(self): 
 
-        self.bird.render()
+        self.bird_sprite.draw(SCREEN)
 
         for pillar in self.pillars:
             pillar.render()
@@ -69,14 +74,8 @@ class Play(Base):
         self.upper_rect.x -= self.upper_speed
         self.upper_rect2.x -= self.upper_speed
 
-        for pillar in self.pillars:
-            if self.bird.collides(pillar) :
-                gStateMachine.change("gameover")
-        
         if self.bird.y <= 0 or self.bird.y >= WINDOW_HEIGHT - 40: gStateMachine.change("gameover")
         
-        # if self.bird.y >= self.lower_rect.y or self.bird.y >= self.lower_rect2.y or self.bird.y <= self.upper_rect.y or self.bird.y <- self.upper_rect2.y : gStateMachine.change("gameover")
-
         self.re_render(self.upper_rect)
         self.re_render(self.upper_rect2)
         self.re_render(self.lower_rect)
@@ -88,9 +87,10 @@ class Play(Base):
             self.pillars.append(self.current)
         
         for pillar in self.pillars:
+            if self.bird.collides(pillar) :
+                gStateMachine.change("gameover")
+            # if self.bird.x + self.bird.size >= pillar.x and 
             if pillar.x < -pillar.width - self.gap : self.pillars = self.pillars[1:]
-
-        for pillar in self.pillars:
             pillar.update()
 
         self.render()
@@ -101,6 +101,7 @@ class Play(Base):
         self.pillars.append(self.current)
         self.bird_speed = 0
         self.bird = Bird()
+        self.score = 0
 
     
     def re_render(self, img):
