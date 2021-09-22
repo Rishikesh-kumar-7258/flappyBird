@@ -13,8 +13,10 @@ class Bird(pygame.sprite.Sprite):
         self.y = WINDOW_HEIGHT // 2 - self.size // 2
         self.color = BLUE
 
-        self.image1 = pygame.image.load("Images/bird1.png").convert()
-        self.image2 = pygame.image.load("Images/bird2.png").convert()
+        self.image1 = pygame.image.load("Images\\bird1.png").convert()
+        self.image2 = pygame.image.load("Images\\bird2.png").convert()
+        # self.image1 = pygame.image.load("C:\\Users\\Rishikesh Kumar\\Dropbox\\My PC (LAPTOP-KP31EEKV)\\Desktop\Games\\flappyBird\\Images\\bird1.png").convert()
+        # self.image2 = pygame.image.load("C:\\Users\\Rishikesh Kumar\\Dropbox\\My PC (LAPTOP-KP31EEKV)\\Desktop\Games\\flappyBird\\Images\\bird2.png").convert()
         self.image1.set_colorkey(WHITE)
         self.image2.set_colorkey(WHITE)
 

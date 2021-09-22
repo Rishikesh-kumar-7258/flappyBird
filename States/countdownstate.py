@@ -11,8 +11,8 @@ class Countdown(Base):
     def __init__(self):
         super().__init__()
 
-        self.largeFont = pygame.font.SysFont("Comis sans MS", 100)
-        self.MediumFont = pygame.font.SysFont("Comis sans MS", 36)
+        self.largeFont = pygame.font.SysFont("Comic sans MS", 100)
+        self.MediumFont = pygame.font.SysFont("Comic sans MS", 36)
         self.count = 4
     
     def render(self): 

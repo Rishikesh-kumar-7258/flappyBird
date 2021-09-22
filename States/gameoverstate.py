@@ -9,8 +9,8 @@ class GameOver(Base):
     def __init__(self):
         super().__init__()
 
-        self.biggerFont = pygame.font.SysFont("Comis sans MS", 100)
-        self.smallerFont = pygame.font.SysFont("Comis sans MS", 36)
+        self.biggerFont = pygame.font.SysFont("Comic sans MS", 100)
+        self.smallerFont = pygame.font.SysFont("Comic sans MS", 36)
         self.startbtn = Button(text="Start Again", color2=BLUE)
         self.startbtn.x = WINDOW_WIDTH // 2 - self.startbtn.width // 2
         self.startbtn.y = WINDOW_HEIGHT // 2 + 200

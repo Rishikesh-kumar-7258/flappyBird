@@ -19,7 +19,7 @@ class Button:
 
     def render(self) :
 
-        font = pygame.font.SysFont("Comis sans MS", int(0.75*self.height))
+        font = pygame.font.SysFont("Comic sans MS", int(0.70*self.height))
         txt = font.render(self.text, True, self.color1, self.color2)
         textRect = txt.get_rect()
         textRect.center = (self.x + self.width // 2, self.y + self.height // 2)
