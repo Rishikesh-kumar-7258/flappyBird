@@ -1,5 +1,4 @@
 import pygame
-from pygame.transform import scale
 
 from constants import *
 
@@ -27,7 +26,7 @@ class Button:
         self.button = pygame.draw.rect(SCREEN, self.color2, [self.x, self.y, self.width, self.height])
         SCREEN.blit(txt, textRect)
 
-    def update(self) : 
+    def update(self) :
         self.render()
 
     def hover(self) :
