@@ -1,4 +1,6 @@
 from random import randint
+
+from pygame.constants import WINDOWHIDDEN
 from classes.pillarClass import Pillar
 from constants import BGC, SCORE, SCREEN, WINDOW_HEIGHT, WINDOW_WIDTH, gStateMachine
 from classes.birdClass import Bird
@@ -14,14 +16,13 @@ class Play(Base):
         self.pillar_sprite = pygame.sprite.Group()
         self.all_sprite = pygame.sprite.Group()
         self.bird = Bird()
-        # self.bird_sprite.add(self.bird)
         self.all_sprite.add(self.bird)
         self.speed = 0
         self.g = 0.5
 
         pillar1, pillar2 = Pillar(), Pillar()
         pillar1.rect.y = randint(-150, 0)
-        pillar2.rect.y = WINDOW_HEIGHT // 2 + (pillar1.rect.bottom - randint(100, 150))
+        pillar2.rect.y = WINDOW_HEIGHT // 2 + (pillar1.rect.bottom - randint(0, 100))
         self.all_sprite.add(pillar1)
         self.pillar_sprite.add(pillar1)
         self.all_sprite.add(pillar2)
@@ -30,6 +31,10 @@ class Play(Base):
         self.last = pillar1
         self.current = pillar1
         self.count = False
+
+        self.time_passed = 0
+
+        self.paused = False
 
 
     def render(self) :
@@ -43,7 +48,28 @@ class Play(Base):
 
         SCREEN.blit(text, textRect)
 
-    def update(self, params) : 
+    def update(self, params) :
+
+        self.render()
+
+        for event in params:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.speed = -8
+                    self.bird.flap = True
+                    self.bird.make_flap()
+                if event.key == pygame.K_p:
+                    self.paused = not self.paused
+
+        if self.paused :
+            font = pygame.font.SysFont("Comic sans MS", 100)
+            text = font.render("paused", True, (255, 255, 255), BGC)
+            textRect = text.get_rect()
+
+            textRect.center = (WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
+
+            SCREEN.blit(text, textRect)
+            return
 
         global SCORE
 
@@ -65,7 +91,6 @@ class Play(Base):
             if self.current.rect.x + self.current.rect.width < self.bird.rect.x and self.count:
                 SCORE += 1
                 self.count = False
-                print(SCORE)
             if pillar.rect.x < - pillar.rect.width: 
                 pillar.kill()
 
@@ -83,12 +108,12 @@ class Play(Base):
                 pygame.time.wait(500)
                 gStateMachine.change("gameover", SCORE=SCORE)
 
-        for event in params:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    self.speed = -8
+        self.time_passed += 1
+        if (self.time_passed >= 30):
+            self.bird.flap = False
+            self.bird.make_flap()
+            self.time_passed = 0
 
-        self.render()
     
     def enter(self, **params):
         global SCORE

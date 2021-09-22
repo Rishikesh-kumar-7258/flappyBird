@@ -27,6 +27,8 @@ class Bird(pygame.sprite.Sprite):
         self.rect.center = (self.x, self.y)
 
         self.mask = pygame.mask.from_surface(self.image)
+
+        self.image = pygame.transform.scale(self.image, (50, 50))
     
     def make_flap(self):
         
