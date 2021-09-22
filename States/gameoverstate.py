@@ -9,17 +9,23 @@ class GameOver(Base):
     def __init__(self):
         super().__init__()
 
-        self.biggerFont = pygame.font.SysFont("Comis sans MS", 72)
+        self.biggerFont = pygame.font.SysFont("Comis sans MS", 100)
         self.smallerFont = pygame.font.SysFont("Comis sans MS", 36)
         self.startbtn = Button(text="Start Again", color2=BLUE)
         self.startbtn.x = WINDOW_WIDTH // 2 - self.startbtn.width // 2
         self.startbtn.y = WINDOW_HEIGHT // 2 + 200
+
+        self.score = 0
 
     def render(self):
         message = self.biggerFont.render("Game Over!", True, RED, BGC)
         mRect = message.get_rect()
         mRect.center = (WINDOW_WIDTH //2 , WINDOW_HEIGHT // 2)
         SCREEN.blit(message, mRect)
+        score = self.smallerFont.render(f"Score : {self.score}", True, GREEN, BGC)
+        mRect = score.get_rect()
+        mRect.center = (WINDOW_WIDTH //2 , WINDOW_HEIGHT // 2 + 100)
+        SCREEN.blit(score, mRect)
         self.startbtn.render()
 
     def update(self, params):
@@ -28,3 +34,7 @@ class GameOver(Base):
             gStateMachine.change("countdown")
 
         self.render()
+    
+    def enter(self, **params):
+        
+        self.score = params['SCORE']

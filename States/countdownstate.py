@@ -35,5 +35,5 @@ class Countdown(Base):
         pygame.time.wait(100)
         self.render()
     
-    def enter(self):
+    def enter(self, **params):
         self.count = 4

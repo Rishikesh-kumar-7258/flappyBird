@@ -10,6 +10,6 @@ class Base:
 
     def update(self, params=None) : pass
 
-    def enter(self) : pass
+    def enter(self, **params) : pass
 
     def Exit(self) : pass

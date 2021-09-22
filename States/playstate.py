@@ -1,6 +1,6 @@
 from random import randint
 from classes.pillarClass import Pillar
-from constants import SCORE, SCREEN, WINDOW_HEIGHT, WINDOW_WIDTH, gStateMachine
+from constants import BGC, SCORE, SCREEN, WINDOW_HEIGHT, WINDOW_WIDTH, gStateMachine
 from classes.birdClass import Bird
 import pygame
 
@@ -34,6 +34,14 @@ class Play(Base):
 
     def render(self) :
         self.all_sprite.draw(SCREEN)
+        font = pygame.font.SysFont("Comic sans MS", 24)
+        text = font.render(f"Score : {SCORE}", True, (255, 255, 255), BGC)
+        textRect = text.get_rect()
+
+        textRect.x= 10
+        textRect.y = 10
+
+        SCREEN.blit(text, textRect)
 
     def update(self, params) : 
 
@@ -67,13 +75,13 @@ class Play(Base):
         if (self.bird.rect.y + self.bird.rect.height >= WINDOW_HEIGHT or
             self.bird.rect.y <= 0) :
             pygame.time.wait(500)
-            gStateMachine.change("gameover")
+            gStateMachine.change("gameover", SCORE=SCORE)
 
         for pillar in self.pillar_sprite:
             pillar.rect.x -= 3
             if pygame.sprite.collide_mask(self.bird, pillar) :
                 pygame.time.wait(500)
-                gStateMachine.change("gameover")
+                gStateMachine.change("gameover", SCORE=SCORE)
 
         for event in params:
             if event.type == pygame.KEYDOWN:
@@ -82,7 +90,7 @@ class Play(Base):
 
         self.render()
     
-    def enter(self):
+    def enter(self, **params):
         global SCORE
         self.all_sprite.empty()
         self.pillar_sprite.empty()
