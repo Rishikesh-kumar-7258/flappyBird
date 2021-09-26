@@ -2,6 +2,9 @@ from constants import WHITE, WINDOW_WIDTH
 import pygame
 
 class Pillar(pygame.sprite.Sprite):
+    """
+    This class renders the pillars (default uses Images/brick.png), and interactions are defined in update() from playstate.py
+    """
 
     def __init__(self):
         super().__init__()

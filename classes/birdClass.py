@@ -4,7 +4,13 @@ from constants import *
 from Images import *
 
 class Bird(pygame.sprite.Sprite):
+    """
+    This class initializes the mechanics of the bird
 
+    Parameters:
+    pygame.sprite: This sprite is initialized in playstate.py and by default, draws from Images\bird1.png and bird2.png
+    
+    """
     def __init__(self):
         super().__init__()
 
@@ -33,6 +39,9 @@ class Bird(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (50, 50))
     
     def make_flap(self):
+        """
+        By default this is false until called by update() in playstate.py, when the user inputs Spacebar kay
+        """
         
         if self.flap : self.image = self.image2
         else : self.image = self.image1
