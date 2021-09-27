@@ -26,7 +26,8 @@ In this game we can learn how to work with
 * Different states
 * Score calculation
 * collision detection 
-* sprites
+* sprites 
+* Pause funtionality
 * movement
 
 ## Installation
