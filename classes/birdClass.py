@@ -1,7 +1,6 @@
 import pygame
 
 from constants import *
-from Images import *
 
 class Bird(pygame.sprite.Sprite):
     """

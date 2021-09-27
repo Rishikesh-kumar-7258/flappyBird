@@ -1,6 +1,7 @@
 __pycache__
-class/__pycache__
-States/__pycache__
+**/__pycache__
 build
 virtual
 main.spec
+setup.py
+dist
