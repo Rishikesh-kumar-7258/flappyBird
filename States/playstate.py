@@ -46,7 +46,7 @@ class Play(Base):
     def render(self) :
         self.all_sprite.draw(SCREEN)
         font = pygame.font.SysFont("Comic sans MS", 24)
-        text = font.render(f"Score : {SCORE}", True, (255, 255, 255), BGC)
+        text = font.render(f"Score : {SCORE}", True, (255, 255, 255))
         textRect = text.get_rect()
 
         textRect.x= 10

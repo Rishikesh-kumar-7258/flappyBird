@@ -27,12 +27,17 @@ class Countdown(Base):
         """
         count = self.largeFont.render(str(int(self.count)), True, WHITE, BGC)
         countRect = count.get_rect()
-        countRect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT // 2)
+        countRect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT // 2 - 100)
 
         txt = self.MediumFont.render("Press space to play", True, BLUE, BGC)
         textRect = txt.get_rect()
-        textRect.center = (WINDOW_WIDTH //2 , WINDOW_HEIGHT // 2 + 200)
+        textRect.center = (WINDOW_WIDTH //2 , WINDOW_HEIGHT // 2 + 100)
         SCREEN.blit(count, countRect)
+        SCREEN.blit(txt, textRect)
+
+        txt = self.MediumFont.render("Press p to toggle pause", True, BLUE, BGC)
+        textRect = txt.get_rect()
+        textRect.center = (WINDOW_WIDTH //2 , WINDOW_HEIGHT // 2 + 200)
         SCREEN.blit(txt, textRect)
 
         if self.count <= 1 : gStateMachine.change("play")
