@@ -10,7 +10,13 @@ from States.basestate import Base
 
 class Play(Base):
 
+    """
+    This class contains the functions necessary for the FlappyBird game mechanics
+    """
     def __init__(self):
+        """
+        Initializing the mechanics of the game
+        """
         super().__init__()
 
         self.pillar_sprite = pygame.sprite.Group()
@@ -49,6 +55,9 @@ class Play(Base):
         SCREEN.blit(text, textRect)
 
     def update(self, params) :
+        """
+        Checks for all possible events and handles user interactions such as Spacebar input, pause ('p' key input by default), and pillar collision
+        """
 
         self.render()
 

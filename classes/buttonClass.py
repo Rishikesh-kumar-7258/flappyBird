@@ -5,6 +5,9 @@ from constants import *
 class Button:
 
     def __init__(self, x=0, y=0, width=120, height=40, color2=BGC, color1=WHITE, text="Button"): 
+        """
+        By default, this renders a 3x1 button with parameters called from constants.py
+        """
 
         self.x = x
         self.y = y

@@ -6,6 +6,12 @@ from constants import *
 
 class GameOver(Base):
 
+    """
+    This is a game over state that takes the argument from the base state to display Game Over message, total score, and presents the New Game option
+    
+    Parameters:
+    Base: This is the base state
+    """
     def __init__(self):
         super().__init__()
 

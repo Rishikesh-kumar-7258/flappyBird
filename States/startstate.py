@@ -6,6 +6,12 @@ from classes.buttonClass import Button
 from constants import *
 
 class Start(Base):
+    """
+    This class state appears when 'python main.py' is invoked
+
+    Parameters:
+    Base: This is the base state
+    """
 
     def __init__(self):
 
@@ -17,6 +23,9 @@ class Start(Base):
 
     
     def render(self) : 
+        """
+        Renders the screen
+        """
         font = pygame.font.SysFont("Comic sans MS", 72)
         text = font.render("Flappy Bird", True, (255, 255, 255), BGC)
         textRect = text.get_rect()
