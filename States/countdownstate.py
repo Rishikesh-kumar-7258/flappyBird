@@ -42,7 +42,7 @@ class Countdown(Base):
 
         if self.count <= 1 : gStateMachine.change("play")
 
-    def update(self, params):
+    def update(self, params, visual=None):
         """
         Updates the number on countdown screen every 100 milliseconds
         """

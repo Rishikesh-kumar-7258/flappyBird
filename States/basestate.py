@@ -8,7 +8,7 @@ class Base:
 
     def render(self): pass
 
-    def update(self, params=None) : pass
+    def update(self, params=None, visual_input=None) : pass
 
     def enter(self, **params) : pass
 

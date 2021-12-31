@@ -54,21 +54,29 @@ class Play(Base):
 
         SCREEN.blit(text, textRect)
 
-    def update(self, params) :
+    def update(self, params, visual_input) :
         """
         Checks for all possible events and handles user interactions such as Spacebar input, pause ('p' key input by default), and pillar collision
         """
 
         self.render()
 
-        for event in params:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    self.speed = -8
-                    self.bird.flap = True
-                    self.bird.make_flap()
-                if event.key == pygame.K_p:
-                    self.paused = not self.paused
+        print(visual_input)
+
+        if (visual_input != None):
+            if (visual_input == 'Up'):
+                self.speed = -8
+                self.bird.flap = True
+                self.bird.make_flap()
+        else:
+            for event in params:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        self.speed = -8
+                        self.bird.flap = True
+                        self.bird.make_flap()
+                    if event.key == pygame.K_p:
+                        self.paused = not self.paused
 
         if self.paused :
             font = pygame.font.SysFont("Comic sans MS", 100)

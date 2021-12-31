@@ -35,7 +35,10 @@ class Start(Base):
         SCREEN.blit(text, textRect)
         self.startButton.render()
 
-    def update(self, params):
+    def update(self, params, visual_input=None):
+
+        if visual_input == 'Up':
+            gStateMachine.change("countdown")
 
         if self.startButton.clicked() : gStateMachine.change("countdown")
 

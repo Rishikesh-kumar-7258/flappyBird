@@ -34,7 +34,7 @@ class GameOver(Base):
         SCREEN.blit(score, mRect)
         self.startbtn.render()
 
-    def update(self, params):
+    def update(self, params, visaul=None):
 
         if self.startbtn.clicked() :
             gStateMachine.change("countdown")
