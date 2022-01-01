@@ -36,6 +36,11 @@ class GameOver(Base):
 
     def update(self, params, visaul=None):
 
+        if visaul == 'Start':
+            gStateMachine.change("countdown")
+        elif visaul == 'Stop':
+            exit()
+
         if self.startbtn.clicked() :
             gStateMachine.change("countdown")
 

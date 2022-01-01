@@ -61,7 +61,7 @@ class Play(Base):
 
         self.render()
 
-        print(visual_input)
+        # print(visual_input)
 
         if (visual_input != None):
             if (visual_input == 'Up'):

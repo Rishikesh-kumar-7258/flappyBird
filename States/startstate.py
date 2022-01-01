@@ -37,9 +37,10 @@ class Start(Base):
 
     def update(self, params, visual_input=None):
 
-        if visual_input == 'Up':
+        if visual_input == 'Start':
             gStateMachine.change("countdown")
 
-        if self.startButton.clicked() : gStateMachine.change("countdown")
+        if self.startButton.clicked() :
+            gStateMachine.change("countdown")
 
         self.render()
