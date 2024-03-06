@@ -39,7 +39,7 @@ def Controller(q1):
                         msg = "Start"
                     # elif open_fingers == 0:
                     #     msg = "Stop"
-                    elif open_fingers == 5:
+                    elif open_fingers == 4:
                         if tm == 0:
                             msg = "Up"
                             tm = 30
