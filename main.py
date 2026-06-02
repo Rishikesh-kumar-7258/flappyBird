@@ -41,3 +41,7 @@ def Main(q1):
 
     pygame.quit()
     quit()
+
+# if __name__ == "__main__":
+#     q1 = Empty()
+#     Main(q1)
